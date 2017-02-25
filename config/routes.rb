@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
-  # get 'messages/index'
-  root 'messages#index'
+  get 'messages/index'
+  # root 'messages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  # rootメソッドを使用することで、Railsがルート'/'とすべき場所を指定できる
+  # (形式)
+  # root to: 'pages#main'		または	root 'pages#main'
+	# indexアクションのviewをrootでルーティングする
+	root 'messages#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
