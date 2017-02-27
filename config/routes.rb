@@ -20,7 +20,11 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-	resources :messages, only: [:create]
+
+  # 特定のアクションへのみルーティング
+  resources :messages, only: [:index, :create]
+  # 不要なアクションへのルーティングを抑制
+	# resources :messages, :except => [:destroy, :update]
 
   # Example resource route with options:
   #   resources :products do

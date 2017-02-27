@@ -12,8 +12,24 @@ class MessagesController < ApplicationController
   # 400 Bad Requestを返す
   def create
 		@message = Message.new(message_params)
-		@message.save
-		redirect_to root_path, notice: 'メッセージを保存しました'
+		# バリデーションで保存できなかった場合の処理がないためコメント化
+		# @message.save
+		# redirect_to root_path, notice: 'メッセージを保存しました'
+
+		# バリデーションで処理に失敗した場合、再度入力を促す対応
+		if @message.save
+			# ビューヘルパを使用したリダイレクト
+			# redirect_to root_path, notice: 'メッセージを保存しました'
+			# flash[:notice] = "メッセージを保存しました"
+			redirect_to root_path, notice: 'メッセージを保存しました'
+		else
+			# メッセージが保存できなかった処理
+			@messages = Message.all
+			# 同一リクエスト内でのみメッセージを出力
+			flash.now[:alert] = "メッセージの保存に失敗しました"
+			# コントローラ内のindexアクションに対応するViewを表示
+			render "index"
+		end
   end
 
 	private
