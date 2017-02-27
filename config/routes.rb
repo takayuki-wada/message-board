@@ -22,9 +22,10 @@ Rails.application.routes.draw do
   #   resources :products
 
   # 特定のアクションへのみルーティング
-  resources :messages, only: [:index, :create]
+  # resources :messages, only: [:index, :create]
   # 不要なアクションへのルーティングを抑制
-	# resources :messages, :except => [:destroy, :update]
+	# resources :messages, except: [:index, :new]
+	resources :messages, except: [:new]
 
   # Example resource route with options:
   #   resources :products do
