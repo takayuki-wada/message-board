@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>MessageBoard</title>
-  <%# Bootstrapの読込み %>
+  <% #Bootstrapの読込み %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -17,6 +17,13 @@
 		</div>
 	</nav>
 	<div class="container">
+		<% #一時的にメッセージを出力(フラッシュメッセージ) %>
+		<% if notice %>
+			<div class="alert alert-info">
+				<%= notice %>
+			</div>
+		<% end %>
+
 		<%= yield %>
 	</div>
 </body>
