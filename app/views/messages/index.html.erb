@@ -8,13 +8,11 @@
 			(
 				<% #抽出されたメッセージの右側に編集ページのリンクを作成 %>
 				<%= link_to "edit", edit_message_path(message) %>
+				<% #pry-byebugでステップ実行 %>
+				<% binding.pry %>
 				<% #対象データの削除 %>
 				<%= link_to "destroy", message, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
 			)
-			<% if false %>
-			<% #デバッグ %>
-			<%= binding.pry %>
-			<% end %>
 			<br>
 		<% end %>
 	</div>

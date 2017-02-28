@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
 	# set_messageメソッドは、editおよびupdate、destroyアクションの前に実行する(フィルタ機能)
 	before_action :set_message, only: [:edit, :update, :destroy]
 
+	# binding.pry
+
   # フォームを表示するアクションの定義
   def index
   	# Viewのform_forに渡すことでフォームが動作する
