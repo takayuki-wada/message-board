@@ -1,61 +1,23 @@
-<form class="form_horizontal">
-	<div class="col-xs-offset-2 col-xs-10">
-		<div class="panel panel-default">
-			<div class="panel-heading">メッセージ一覧</div>
-				<div class="form_group">
-					<div class="panel-body">
-						<% #パネルの中に、既に登録済みのデータを出力 %>
-						<% @messages.each do |message| %>
-							<span class="label label-info"><%= message.name %></span>
-							<%= message.body %>
-							(
-								<% #抽出されたメッセージの右側に編集ページのリンクを作成 %>
-								<%= link_to "edit", edit_message_path(message) %>
-
-								<% if false %>
-									<% #pry-byebugでステップ実行 %>
-									<% binding.pry %>
-								<% end %>
-
-								<% #対象データの削除 %>
-								<%= link_to "destroy", message, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
-							)
-							<br>
-						<% end %>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<%= form_for(@message) do |f| %>
-		<div class="col-xs-offset-4 col-xs-8">
-			<div class="form_group">
-				<div class="col-xs-2">名前:	</div>
-				<% if false %><%= f.text_field :name %><% end %>
-				<div class="col-xs-10">
-					<%= f.text_area :name, class: 'form_control' %>
-				</div>
-			</div>
-
-			<div class="form_group">
-				<div class="col-xs-2">内容:</div>
-				<% if false %><%= f.text_field :body %><% end %>
-				<div class="col-xs-10">
-					<%= f.text_area :body, class: 'form_control' %>
-				</div>
-			</div>
-
-			<div class="form_group">
-				<div class="col-xs-offset-2 col-xs-10">
-					<% if false %><%= f.submit class: "btn btn-sm btn-primary" %><% end %>
-					<%= f.submit class: "btn btn-primary" %>
-				</div>
-			</div>
+<% #既に投稿された情報を一覧表示する %>
+<div class="panel panel-success">
+	<div class="panel-heading" >メッセージ一覧</div>
+	<div class="panel-body">
+		<% #パネルの中に、既に登録済みのデータを出力 %>
+		<% @messages.each do |message| %>
+			<h4><span class="label label-info col-md-2 col-md-offset-2"><%= message.name %></span>
+			<div class="col-md-5"><%= message.body %></div></h4>
+			(
+				<% #抽出されたメッセージの右側に編集ページのリンクを表示 %>
+				<%= link_to "edit", edit_message_path(message) %>
+				<% #pry-byebugでステップ実行 %>
+				<% #binding.pry %>
+				<% #抽出されたメッセージの右側に削除ページへのリンクを表示 %>
+				<%= link_to "destroy", message, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
+			)
+			<br>
 		<% end %>
 	</div>
-</form>
+</div>
 
-<% if false %>
-	<% #部分テンプレートの読込み(パーシャル) / /views/messages/_form.html.erbを呼出す %>
-	<%= render 'form' %>
-<% end %>
+<% #部分テンプレートの読込み(パーシャル) / /views/messages/_form.html.erbを呼出す %>
+<%= render 'form' %>

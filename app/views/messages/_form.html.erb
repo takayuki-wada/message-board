@@ -1,31 +1,37 @@
-<% #フォームの生成 %>
 <%= form_for(@message) do |f| %>
-	<%# モデルでバリデーションが失敗した際、エラーメッセージを画面に出力 %>
+	<% #バリデーションに定義した条件を満たさない場合、エラーメッセージを表示する %>
 	<% if @message.errors.present? %>
 		<div class="alert alert-danger">
 			<%= alert %>
 			<ul>
 				<% @message.errors.full_messages.each do |full_message| %>
-					<li><%= full_message %></li>
+					<li>
+						<%= full_message %>
+					</li>
 				<% end %>
 			</ul>
 		</div>
 	<% end %>
 
-	<% if false %>
-		# comment-start
-		名前:
-		<%= f.text_field :name %>
-		内容:
-		<%= f.text_field :body %>
-		# comment-end
-	<% end %>
+	<% # 入力フォームのレイアウト定義 %>
+	<form class="form_horizontal">
+		<div class="form-group row">
+			<label for="input-contribution-name" class="col-md-offset-3 col-md-1 control-label">名前</label>
+			<div class="col-md-3">
+				<%= f.text_field :name, class: "form-control", id: "input-contribution-name", placeholder: "投稿者の名前を入力してください。" %>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="input-contribution-contents" class="col-md-offset-3 col-md-1 control-label">内容</label>
+			<div class="col-md-3">
+				<%= f.text_area :body, class: "form-control", id: "input-contribution-contents" , placeholder: "投稿したいことを入力してください" %>
+			</div>
+		</div>
 
-	名前:
-	<%= f.text_area :name %>
-	内容:
-	<%= f.text_area :body %>
-
-	<%= f.submit class: "btn btn-sm btn-primary" %>
+		<div class="form-group row">
+			<div class="col-md-offset-3 col-sm-9">
+				<%= f.submit class: "btn btn-primary" %>
+			</div>
+		</div>
+	</form>
 <% end %>
-
