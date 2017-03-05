@@ -4,8 +4,9 @@
 	<div class="panel-body">
 		<% #パネルの中に、既に登録済みのデータを出力 %>
 		<% @messages.each do |message| %>
-			<h4><span class="label label-info col-md-2 col-md-offset-2"><%= message.name %></span>
-			<div class="col-md-5"><%= message.body %></div></h4>
+			<h4><span class="label label-info col-md-2 col-md-offset-1"><%= message.name %></span>
+			<div class="col-md-5"><%= message.body %></div>
+			<div class="col-md-2"><%= message.age %></div></h4>
 			(
 				<% #抽出されたメッセージの右側に編集ページのリンクを表示 %>
 				<%= link_to "edit", edit_message_path(message) %>
