@@ -1,5 +1,5 @@
 <% #ActiveView::Helpers::FormHelper#form_forで生成されるformタグの第2引数にclassを定義(水平方向に並べる) %>
-<%= form_for @message, html: {class: "form_horizontal"} do |f| %>
+<%= form_for(@message, html: {class: "form_horizontal"}) do |f| %>
 	<% #バリデーションに定義した条件を満たさない場合、エラーメッセージを表示する %>
 	<% if @message.errors.present? %>
 		<div class="alert alert-danger">
@@ -14,7 +14,7 @@
 		</div>
 	<% end %>
 
-	<% # 入力フォームのレイアウト定義 %>
+	<% #入力フォームのレイアウト定義 %>
 	<div class="form-group row">
 		<label for="input-contribution-name" class="col-md-offset-3 col-md-1 control-label">名前</label>
 		<div class="col-md-3">
