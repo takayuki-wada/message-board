@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+
+# Heroku Setting
+ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.8'
 # Use sqlite3 as the database for Active Record
@@ -48,4 +51,5 @@ end
 
 group :production do
 	gem 'pg' # Pg is the Ruby interface to the PostgreSQL RDBMS
+	gem 'rails_12factor'
 end
