@@ -65,8 +65,8 @@ class MessagesController < ApplicationController
   # 許可する属性をメッセージ毎にチェックするようこのメソッドを特殊化
   def message_params
   	# paramsがmessageというKeyが存在するか検証し、params[:message]のうち、
-  	# :nameおよび:bodyの値のみ受取るようにフィルタリング
-  	params.require(:message).permit(:name, :body)
+  	# :nameおよび:body、:ageの値のみ受取るようにフィルタリング
+  	params.require(:message).permit(:name, :body, :age)
   end
 
   def set_message
